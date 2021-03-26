@@ -1,0 +1,73 @@
+﻿@model Profesional
+
+@{
+    Layout = null;
+    ViewBag.Title = "Detalles";
+    var photopath = "/imagenes/noimage.jpg";
+    if (Model.Photopath != null)
+    {
+        photopath = Model.Photopath;
+    }
+
+}
+
+<div class="col-12">
+    <div class=" mb-lg-5">
+        <div class="text-center">
+            <img src=@photopath class="rounded-circle z-depth-1-half avatar-pic ui-resizable mb-3" alt="Sin logo" height="150" width="150">
+        </div>
+        <hr class="my-0">
+        <div class="card-body">
+            <h5 class="card-title font-weight-bold">Datos profesional</h5>
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <a class="text-black-50"><i class="fas fa-file-alt font-weight-bold"> Nombre:</i><span class="font-weight-bold">@Model.Persona.Nombre</span></a>
+                </li>
+                <li>
+                    <a><i class="fas fa-file-alt"> Apellido: @Model.Persona.Apellido</i></a>
+                </li>
+                <li><i class="fas fa-calendar"> Fecha nacimiento: @Model.Persona.FechaNacimiento.Value.ToShortDateString()</i>
+                </li>
+                <li>
+                    <i class="fa fa-venus-mars text-black-50 font-weight-bold"> Sexo:</i><span class="font-weight-bold font-italic">@(Model.Persona.Sexo == "M" ? "Masculino" : "Femenino")</span>
+
+                </li>
+                <li>
+                    <i class="fa fa-clipboard-check text-black-50 font-weight-bold"> Matricula nacional:</i><span class="font-weight-bold font-italic">@Model.MatriculaNacional</span>
+                </li>
+                <li>
+                    <i class="fa fa-clipboard-check text-black-50 font-weight-bold"> Matricula provincial:</i><span class="font-weight-bold font-italic">@Model.MatriculaProvincial</span>
+
+                </li>
+                <li>
+                    <i class="fas fa-calendar"> Ingreso: @Model.Creado.ToShortDateString()</i>
+                </li>
+                <li>
+                    <i class="fas fa-calendar"> Modificado: @Model.Modificado.ToShortDateString()</i>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-0">
+        <div class="card-body">
+            <h5 class="card-title font-weight-bold">Especialidades</h5>
+            @foreach (var item in (IList<Clinica_profesinales_especialidad>)ViewBag.especialidades)
+            {
+                <a href="@Url.Action("RedireccionarEspecialidad", new { nombre = item.Especialidad.Descripcion })" class="badge badge-primary mr-1 my-1">@item.Especialidad.Descripcion</a>
+            }
+        </div>
+        <hr class="my-0">
+        <div class="card-body">
+            <h5 class="card-title font-weight-bolder">Clinicas</h5>
+            <ul class="list-unstyled mb-0">
+
+                @foreach (var item in (IList<Clinica_profesionales>)ViewBag.clinicas)
+                {
+                <li>
+                    <a href="@Url.Action("RedireccionarClinica", new { nombre= item.Clinica.Nombre })"><i class="fas fa-clinic-medical"> Clinica:<span>@item.Clinica.Nombre</span></i></a>
+                </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>

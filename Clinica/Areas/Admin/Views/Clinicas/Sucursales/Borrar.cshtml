@@ -1,0 +1,80 @@
+﻿@model Sucursal
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sucursal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photopath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photopath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clinica.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clinica.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localidad.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localidad.Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

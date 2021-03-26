@@ -1,0 +1,48 @@
+﻿@model Clinica
+
+@{
+    ViewBag.Title = "Editar";
+    var photopath = "/imagenes/noimage.jpg";
+    if(Model.Photopath!=null)
+    {
+        photopath = Model.Photopath;
+    }
+}
+
+<h5>Editar clinica @Html.DisplayFor(c=>c.Nombre)</h5>
+
+@using (Html.BeginForm("Editar","Clinicas",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+<div class="form-horizontal">
+    <hr />
+    @Html.HiddenFor(model => model.ClinicaId)
+    @Html.HiddenFor(m=>m.FechaCreacion)
+    @Html.HiddenFor(m=>m.Photopath)
+
+<div class="file-field">
+    <div class="mb-4">
+        <img src="@photopath"
+             class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar" height="150" width="150">
+    </div>
+    <div class="d-flex justify-content-start">
+        <div class="btn btn-mdb-color btn-rounded float-left">
+            <input type="file" name="File" id="File">
+        </div>
+    </div>
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            <button type="button" class="btn btn-danger atras">Volver</button>
+        </div>
+    </div>
+</div>
+}

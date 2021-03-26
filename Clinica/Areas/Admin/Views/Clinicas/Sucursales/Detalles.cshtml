@@ -1,0 +1,66 @@
+﻿@model Sucursal
+@Html.BeginForm("AsignarHorarioProfesional", "Clinicas", FormMethod.Post)
+{
+<h4>Sucursal</h4>
+<hr />
+@foreach (var item in (IList<Sucursal>)ViewBag.foto)
+{
+    var foto = item.Photopath;
+    if (item.Photopath == null)
+    {
+
+        foto = "/imagenes/noimage.jpg";
+    }
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row  align-items-center justify-content-between" style="background-color: #0d0c0d">
+                                <h6> </h6>
+                                <h6 class="m-0 font-weight-bold text-white">Listado de clinicas</h6>
+                                <a href="@Url.Action("AsignarHorarioProfesional", new { id = item.SucursalId})" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Dar horario a un profesional"><i class="fas fa-plus"></i>Asignar horario</a>
+                            </div>
+                            <div class="card-body bg-white">
+                                <table class="table text-black">
+                                    <tr class="mb-5 text-black">
+                                        <th>Nombre de Clinica</th>
+                                        <th>Calle</th>
+                                        <th>Altura</th>
+                                        <th>Nombre</th>
+                                        <th>Clininca</th>
+                                        <th>Localidad</th>
+                                        <th>Provinicia</th>
+                                    </tr>
+                                    <tr class="text-gray-700">
+                                        <td><img src="@foto" alt="No hay foto" width="70" height="70" class="rounded-circle z-depth-1-half avatar-pic ui-resizable" /></td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Calle)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Altura)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Clinica.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Localidad.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(c => c.Localidad.Provincia.Descripcion)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+}

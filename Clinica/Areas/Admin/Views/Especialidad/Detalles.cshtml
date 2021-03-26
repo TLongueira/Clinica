@@ -1,0 +1,45 @@
+﻿@model Especialidad
+
+@{
+    ViewBag.Title = "Detalles";
+    var asignar = (IList<Clinica>)ViewBag.NombreClinica;
+
+}
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row  align-items-center justify-content-center" style="background-color: #0d0c0d">
+                                <h6></h6>
+                                <h6 class="m-0 font-weight-bold text-white">Listado de Profesionales con la especialidad @Html.DisplayFor(E => E.Descripcion)</h6>
+                               </div>
+                            <div class="card-body bg-white">
+                                <table class="table text-black">
+                                    <tr class="mb-5 text-black">
+                                        <th>Foto</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Clinica</th>
+                                    </tr>
+
+                                    @foreach (var item in (IList<Clinica_profesinales_especialidad>)ViewBag.especialidades)
+                                    {
+                                        <tr class="text-gray-700">
+                                            <td><img src="@item.Clinica_profesionales.Profesional.Photopath" alt="No hay foto" width="70" height="70" class="rounded-circle z-depth-1-half avatar-pic ui-resizable" /></td>
+                                            <td>@item.Clinica_profesionales.Profesional.Persona.Nombre,@item.Clinica_profesionales.Profesional.Persona.Apellido</td>
+                                            @foreach (var subitem in asignar.Where(C => C.ClinicaId == item.Clinica_profesionales.id_clinica))
+                                            {
+                                                <td>@item.Clinica_profesionales.Clinica.Nombre</td>
+                                            }
+                                            <td></td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

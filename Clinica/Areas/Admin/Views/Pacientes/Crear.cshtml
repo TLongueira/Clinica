@@ -1,0 +1,92 @@
+﻿@model Pacientes
+@using (Html.BeginForm("CrearPaciente","Pacientes",FormMethod.Post, new { id = "Form-Paciente", enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <h4>Pacientes</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Nombre, "Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Apellido, "Apellido", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Documento, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Documento, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-10", })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", placeholder = "Date/Month/Year", Type = "date" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Sexo, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => model.Persona.Sexo, "M", new { @checked = "checked" })
+                    <label class="form-check-label" for="Masculino">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => Model.Persona.Sexo, "F")
+                    <label class="form-check-label" for="Femenino">Femenino</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numero_credencial, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Numero_credencial, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObraId, "ObraId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ObraId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Clave</label>
+           <div class="col-md-10">
+               <input type="text" name="Contraseña" id="Contraseña" />
+                @*@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/additional-methods.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/adicional.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.default.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/messages_es_AR.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Pacientes/Abm.js"></script>
+}

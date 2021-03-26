@@ -1,0 +1,119 @@
+﻿@model Profesional
+
+@{
+    ViewBag.Title = "Editar";
+        var photopath = "/imagenes/noimage.jpg";
+    if (Model.Photopath != null)
+    {
+        photopath = Model.Photopath;
+    }
+}
+
+@using (Html.BeginForm("Editar","Profesional",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Editar profesional @Html.DisplayFor(m => m.Persona.Nombre) @Html.DisplayFor(m => m.Persona.Apellido)</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Persona.PersonaId)
+        @Html.HiddenFor(model => model.ProfesionalId)
+        @Html.HiddenFor(model => model.PersonaId)
+        @Html.HiddenFor(model => model.Activo)
+        @Html.HiddenFor(model => model.Creado)
+
+        <div class="file-field">
+            <div class="mb-4">
+                <img src=@photopath
+                     class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar" height="150" width="150">
+            </div>
+            <div class="d-flex justify-content-start">
+                <div class="btn btn-mdb-color btn-rounded float-left">
+                    <input type="file" name="File" id="File">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Nombre, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Persona.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Apellido, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Persona.Apellido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Documento, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Documento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Persona.Documento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-10", })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                @Html.ValidationMessageFor(model => model.Persona.FechaNacimiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Persona.Sexo, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => model.Persona.Sexo, "M", new { @checked = "checked" })
+                    <label class="form-check-label" for="Masculino">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => Model.Persona.Sexo, "F")
+                    <label class="form-check-label" for="Femenino">Femenino</label>
+                </div>
+                @Html.ValidationMessageFor(Model => Model.Persona.Sexo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatriculaNacional, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatriculaNacional, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MatriculaNacional, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatriculaProvincial, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatriculaProvincial, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MatriculaProvincial, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voler al listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,18 @@
+#blur {
+    padding: 300px;
+    z-index: 1;
+    font-weight: bold;
+    visibility:visible;
+}
+.content {
+    background-image: url('../../imagenes/Login_hospital.jpg');
+    background-size: cover;
+    position: relative;
+}
+#transparente {
+    visibility: hidden;
+}
+#fondonegro {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.7);
+}

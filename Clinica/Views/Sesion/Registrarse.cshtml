@@ -1,0 +1,73 @@
+﻿@model Pacientes
+
+@{
+    ViewBag.Title = "Registro";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <link href="~/Content/Login/Registro.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <h2>Registro</h2>
+        @using (Html.BeginForm("Registrarse", "Sesion", FormMethod.Post, new { @autocomplete = "off" }))
+        {
+            <div class="col-md-10">
+                <input type="text" name="Nick" id="Nick" placeholder="Nick" />
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Apellido, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.Documento, new { htmlAttributes = new { @class = "form-control", placeholder = "Documento", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Persona.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", placeholder = "Date/Month/Year", Type = "date", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => model.Persona.Sexo, "M", new { @checked = "checked" })
+                    <label class="form-check-label" for="Masculino">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => Model.Persona.Sexo, "F")
+                    <label class="form-check-label" for="Femenino">Femenino</label>
+                </div>
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Numero_credencial, new { htmlAttributes = new { @class = "form-control", placeholder = "Credenciales", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownList("ObraId", null, htmlAttributes: new { @class = "form-control", id = "texto" })
+            </div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", id = "texto" } })
+            </div>
+            <div class="col-md-10">
+                <input type="password" name="Contraseña" id="Contraseña" placeholder="Constraseña" />
+            </div>
+            <div class="col-md-10">
+                <input type="submit" value="Registrarse" class="btn btn-success" id="botones" />
+                <a href="@Url.Action("Registrarse")" class="btn btn-warning" id="botones">Registrarse</a>
+                <button type="button" class="btn btn-danger atras" id="botones1">Volver</button>
+            </div>
+        }
+    </div>
+</body>
+</html>
+@section Scripts {
+
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/additional-methods.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/adicional.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.default.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/messages_es_AR.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Pacientes/Abm.js"></script>
+    <script src="~/Scripts/Modulos/common.js"></script>
+}

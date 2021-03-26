@@ -1,0 +1,57 @@
+﻿@model Pacientes
+
+<div>
+    <h4>Pacientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_credencial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_credencial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photopath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photopath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obra_social.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.obra_social.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Nombre) @Html.DisplayFor(m=>m.Persona.Apellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.FechaNacimiento)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

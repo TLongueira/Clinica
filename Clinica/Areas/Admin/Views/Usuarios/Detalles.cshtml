@@ -1,0 +1,80 @@
+﻿@model Usuarios
+
+@{
+    ViewBag.Title = "Detalles";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="h3 mb-0 text-gray-800">Detalles @Html.DisplayNameFor(model => model.NombreUsuario)</h6>
+            </div>
+            <div class="card-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <img src="~/imagenes/noimage.jpg" class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar" height="100" width="100">
+                        </dt>
+                        <dd></dd>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Clave, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Clave, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Creado, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Modificado, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Rol.Descripcion, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Rol.Descripcion, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TipoUsuario.Descripcion, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TipoUsuario.Descripcion, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-10" })
+                            <div class="button-checkbox">
+                                <button type="button" class="btn" data-color="success">Activo @Html.DisplayFor(Model => Model.Activo)</button>
+                                <input type="checkbox" class="hidden" checked />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.ActionLink("Editar", "Editar", new { id = Model.UsuarioId })
+                                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+                            </div>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@section Scripts{
+    @Scripts.Render("~/Scripts/Modulos/Admin/Diseños/Checkbox-listo.js")
+}

@@ -1,0 +1,23 @@
+﻿@foreach (var flash in Request.GetFlashMessages())
+{
+    var clase = "alert";
+    switch(flash.Type)
+    {
+        case "success":
+            clase += " alert-success";
+            break;
+        case "danger":
+            clase += " alert-danger";
+            break;
+        case "warning":
+            clase += " alert-warning";
+            break;
+        default:
+            clase += " alert-default";
+            break;
+
+    }
+    <div class="@clase" onclick="$(this).remove()">
+        @flash.Message
+        </div>
+}

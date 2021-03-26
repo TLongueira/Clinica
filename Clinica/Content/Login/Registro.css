@@ -1,0 +1,91 @@
+﻿body {
+    background-image: url('../../imagenes/Login_hospital.jpg');
+    background-size:cover;
+}
+.wrap {
+max-width:400px;
+border-radius:50px;
+margin:auto;
+background:rgba(0,0,0,0.8);
+box-sizing:border-box;
+padding:20px;
+color:#FFF;
+margin-top:100px;
+}
+h2{
+text-align:center;
+}
+#texto{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px 5px;
+    background:rgba(0,0,0,0.10);
+    outline:none;
+    border:none;
+    border-bottom:1px dotted #FFF;
+    color:#FFF;
+    border-radius:5px;
+    margin:5px;
+    font-weight:bold;
+}
+#Contraseña {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px dotted #FFF;
+    color: #FFF;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+}
+#botones{
+    width:50%;
+    box-sizing:border-box;
+    padding:10px 0;
+    margin-top:30px;
+    outline:none;
+    border:none;
+    background:#60adde;
+    opacity:0,7;
+    border-radius:20px;
+    font-size:15px;
+    color:#FFF;
+}
+#botones1 {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    background-color:red;
+    opacity: 0,7;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #FFF;
+}
+#botones :hover{
+    background:#1a21a9;
+    opacity:0,7;
+
+}
+#botones1 :hover {
+    background: #8d1010;
+    opacity: 0,7;
+}
+#Nick {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    border: none;
+    border-bottom: 1px dotted #FFF;
+    color: #FFF;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+}

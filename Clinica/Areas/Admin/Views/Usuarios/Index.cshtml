@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Usuarios>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #0d0c0d;">
+                            <h6></h6>
+                            <h6 class="m-0 font-weight-bold text-white">
+                                Listado de Usuarios
+                            </h6>
+                            <a href="@Url.Action("Crear")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Agregar usuario"><i class="fas fa-plus fa-sm text-white-50"></i></a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>Nombre usuario</th>
+                                    <th width="20%">Acciones</th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.NombreUsuario</td>
+                                        <td>
+                                            |<a href="@Url.Action("Editar", new { id = item.UsuarioId })" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>|
+                                            |<a href="@Url.Action("Detalles", new { id = item.UsuarioId })" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fas fa-eye"></i></a>|
+                                            |<a href="@Url.Action("Borrar", new { id = item.UsuarioId })" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Desactivar"><i class="fas fa-toggle-off"></i></a>|
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

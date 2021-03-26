@@ -1,0 +1,36 @@
+﻿@model Clinica
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6></h6><h6></h6>
+                    <h6 class="m-0 font-weight-bold text-black-50">Asignar especialidades @Html.DisplayFor(C => C.Nombre)</h6>
+                    <p>
+                        <a href="@Url.Action("inactivo","Especialidad")" class="d-none d-sm-inline-block btn btn-sm btn-dark">Inactivo</a>
+                        <a href="@Url.Action("Crear")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Asignar especialidad</a>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Especialidad</th>
+                        </tr>
+
+                        @foreach (var item in (IList<spEspecialidadProfesional_Result>)ViewBag.especialidades)
+                        {
+                            <tr>
+                                <td>@item.Descripcion</td>
+                                <td>
+                                    <a href="@Url.Action("Asignarespecialidades", new { id = item.EspecialidadId })" class="btn btn-outline-success">Asignar</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

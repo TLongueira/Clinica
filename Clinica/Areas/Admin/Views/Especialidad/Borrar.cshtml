@@ -1,0 +1,73 @@
+﻿@model Especialidad
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+<h2>Borrar</h2>
+
+<h3>Seguro desea borrar?</h3>
+<div>
+    <h4>Especialidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>
+
+@using (Html.BeginForm("Desactivar", "Profesional"))
+{
+    @Html.HiddenFor(model => model.Activo)
+    <div class="col-md-6 col-xl-3">
+        <div class="card mb-lg-5">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Detalle profesional @Html.DisplayFor(model => model.Descripcion))</h5>
+            </div>
+            <hr class="my-0">
+            <div class="card-body">
+                <h5 class="h6 card-title font-weight-bold">Datos profesional</h5>
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <a><i class="fas fa-file-alt font-weight-bold"> Nombre:</i><span class="font-weight-bold">@Model.EspecialidadId</span></a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-0">
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a href="@Url.Action("Desactivar", new { id = Model.EspecialidadId })" class="btn btn-danger"> Desactivar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

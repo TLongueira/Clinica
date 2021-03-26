@@ -1,0 +1,139 @@
+﻿@model Profesional
+
+@{
+    ViewBag.Title = "Crear";
+}
+@using (Html.BeginForm("Crear", "Profesional", FormMethod.Post, new { id = "form_profesional", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal m-sm-1">
+        <nav class="navbar navbar-expand-sm bg-light">
+            <h1 class="h3 mb-0 text-black-50">Agregar Profesional</h1>
+        </nav>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card border-left-primary shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-10">
+                                <h2 class="h3 mb-0 text-black-50">Datos personales</h2>
+                                <div class="file-field">
+                                    <div class="mb-4">
+                                        <img src="~/imagenes/noimage.jpg"
+                                             class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar" height="150" width="150">
+                                    </div>
+                                    <div class="d-flex justify-content-start">
+                                        <div class="btn btn-mdb-color btn-rounded float-left">
+                                            <input type="file" name="File" id="File">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Persona.Nombre, htmlAttributes: new { @class = "control-label col-md-10" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Persona.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Persona.Nombre, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Persona.Apellido, htmlAttributes: new { @class = "control-label col-md-10" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Persona.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Persona.Apellido, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Persona.Documento, htmlAttributes: new { @class = "control-label col-md-10" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Persona.Documento, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Persona.Documento, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Persona.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-10", })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Persona.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", placeholder = "Date/Month/Year", Type = "date" } })
+                                        @Html.ValidationMessageFor(model => model.Persona.FechaNacimiento, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Persona.Sexo, htmlAttributes: new { @class = "control-label col-md-10" })
+                                    <div class="col-md-10">
+                                        <div class="form-check form-check-inline">
+                                            @Html.RadioButtonFor(model => model.Persona.Sexo, "M", new { @checked = "checked" })
+                                            <label class="form-check-label" for="Masculino">Masculino</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            @Html.RadioButtonFor(model => Model.Persona.Sexo, "F")
+                                            <label class="form-check-label" for="Femenino">Femenino</label>
+                                        </div>
+                                        @Html.ValidationMessageFor(Model => Model.Persona.Sexo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row mt-1">
+                    <div class="col-12">
+                        <div class="card border-left-primary shadow">
+                            <div class="card-body">
+                                <span>Datos de profesional</span>
+
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="row">
+                                    <div class="col-12 col-md-10">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MatriculaNacional, htmlAttributes: new { @class = "control-label col-md-10" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.MatriculaNacional, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MatriculaNacional, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-10">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.MatriculaProvincial, htmlAttributes: new { @class = "control-label col-md-10" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.MatriculaProvincial, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.MatriculaProvincial, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <button type="button" class="btn btn-danger atras">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+
+</div>
+@section Scripts {
+
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/additional-methods.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/adicional.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.default.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/messages_es_AR.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Profesionales/abm.js"></script>
+}

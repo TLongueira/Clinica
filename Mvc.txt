@@ -1,0 +1,18 @@
+tipo usuario => paciente
+
+AREA nueva
+
+Mi cuenta 
+-turnos futuros
+-opcion(turnos pasados)
+
+Clinica
+Sucursal - (opcion)
+Especialidad
+Profesional
+Fecha Hora
+Observacion 
+-------------------------------------------------------------
+- Clinicas (Con horarios)
+- Profesionales (con horario)
+-turnos (profesiona-dia-hora) -------> (Clinica - especialidad)

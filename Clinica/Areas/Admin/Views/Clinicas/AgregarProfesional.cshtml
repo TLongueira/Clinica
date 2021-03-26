@@ -1,0 +1,44 @@
+﻿@model Clinica
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Asignar profesionales a clinica @Html.DisplayFor(C=>C.Nombre)</h6>
+                        <a href="@Url.Action("Index", new { id = Model.ClinicaId })" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fas fa-undo fa-sm text-white-50"></i>Volver</a>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nombre completo</th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in (IList<spProfesionalClinica_Result>)ViewBag.Profesionales)
+                        {
+                            var foto = item.Photopath;
+                            if (item.Photopath == null)
+                            {
+
+                                foto = "/imagenes/noimage.jpg";
+                            }
+                            <tr>
+                                <td><img src="@foto" alt="No hay foto" width="70" height="70" class="rounded-circle z-depth-1-half avatar-pic ui-resizable" /></td>
+                                <td>@item.NombreCompleto</td>
+                                <td align="right">
+                                    <a href="@Url.Action("Asignar", new { id = item.ProfesionalId })" class="btn btn-outline-success">Asignar</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

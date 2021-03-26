@@ -1,0 +1,1358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Atencion">
+          <Key>
+            <PropertyRef Name="AtencionId" />
+          </Key>
+          <Property Name="AtencionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SucursalId" Type="int" />
+          <Property Name="Desde" Type="time" Precision="7" />
+          <Property Name="Hasta" Type="time" Precision="7" />
+          <Property Name="DiaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="ClinicaId" />
+          </Key>
+          <Property Name="ClinicaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="Photopath" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Clinica_profesinales_especialidad">
+          <Key>
+            <PropertyRef Name="id_cpe" />
+          </Key>
+          <Property Name="id_cpe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cp" Type="int" />
+          <Property Name="id_especialidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Clinica_profesionales">
+          <Key>
+            <PropertyRef Name="id_PC" />
+          </Key>
+          <Property Name="id_PC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_profesional" Type="int" />
+          <Property Name="id_clinica" Type="int" />
+        </EntityType>
+        <EntityType Name="DiasSemana">
+          <Key>
+            <PropertyRef Name="id_dia" />
+          </Key>
+          <Property Name="id_dia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="EspecialidadId" />
+          </Key>
+          <Property Name="EspecialidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localidad">
+          <Key>
+            <PropertyRef Name="LocalidadId" />
+          </Key>
+          <Property Name="LocalidadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProvinciaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="obra_social">
+          <Key>
+            <PropertyRef Name="ObraId" />
+          </Key>
+          <Property Name="ObraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="PacienteID" />
+          </Key>
+          <Property Name="PacienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Numero_credencial" Type="int" />
+          <Property Name="ObraId" Type="int" />
+          <Property Name="photopath" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Documento" Type="int" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="FechaNacimiento" Type="date" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="ProfesionalId" />
+          </Key>
+          <Property Name="ProfesionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonaId" Type="int" Nullable="false" />
+          <Property Name="MatriculaNacional" Type="varchar" MaxLength="10" />
+          <Property Name="MatriculaProvincial" Type="varchar" MaxLength="10" />
+          <Property Name="Creado" Type="datetime" Nullable="false" />
+          <Property Name="Modificado" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Photopath" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ProvinciaId" />
+          </Key>
+          <Property Name="ProvinciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="SucursalId" />
+          </Key>
+          <Property Name="SucursalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClinicaId" Type="int" />
+          <Property Name="LocalidadId" Type="int" />
+          <Property Name="Photopath" Type="varchar" MaxLength="255" />
+          <Property Name="Calle" Type="varchar" MaxLength="50" />
+          <Property Name="Altura" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Consultorios" Type="int" />
+        </EntityType>
+        <EntityType Name="sucursales_profesionales_especialidades">
+          <Key>
+            <PropertyRef Name="id_spe" />
+          </Key>
+          <Property Name="id_spe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cpe" Type="int" />
+          <Property Name="id_sucursal" Type="int" />
+          <Property Name="dia" Type="int" Nullable="false" />
+          <Property Name="Hora_inicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Hora_fin" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoUsuarioId" />
+          </Key>
+          <Property Name="TipoUsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TipoUsuarioId" Type="int" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Creado" Type="datetime" Nullable="false" />
+          <Property Name="Modificado" Type="datetime" Nullable="false" />
+          <Property Name="id_persona" Type="int" />
+        </EntityType>
+        <Association Name="FK__Atencion__DiaId__308E3499">
+          <End Role="DiasSemana" Type="Self.DiasSemana" Multiplicity="0..1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiasSemana">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="DiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencion__Sucurs__2F9A1060">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="SucursalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_cl__08B54D69">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="0..1" />
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Clinica_profesionales">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_cp__1332DBDC">
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="0..1" />
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica_profesionales">
+              <PropertyRef Name="id_PC" />
+            </Principal>
+            <Dependent Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_cp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_es__14270015">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="EspecialidadId" />
+            </Principal>
+            <Dependent Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_pr__07C12930">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="0..1" />
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="ProfesionalId" />
+            </Principal>
+            <Dependent Role="Clinica_profesionales">
+              <PropertyRef Name="id_profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacientes__ObraI__5224328E">
+          <End Role="obra_social" Type="Self.obra_social" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="obra_social">
+              <PropertyRef Name="ObraId" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="ObraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacientes__Perso__51300E55">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Locali__4AB81AF0">
+          <End Role="Localidad" Type="Self.Localidad" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="LocalidadId" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="LocalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Sucurs__6E01572D">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursale__id_cp__17036CC0">
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="0..1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_cpe" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="id_cpe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursale__id_su__17F790F9">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursales___dia__3D2915A8">
+          <End Role="DiasSemana" Type="Self.DiasSemana" Multiplicity="1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiasSemana">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__id_per__2CBDA3B5">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfesionalPersona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUsuarioRol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUsuarioTipo">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Localidad_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Localidad" Type="Self.Localidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Localidad">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spDiasAtencion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDiasAtencionAsignados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEspecialidadProfesional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProfesionalID" Type="int" Mode="In" />
+          <Parameter Name="ClinicaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spProfesionalClinica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClinicaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spProfesionalClinicaEspecialidadInicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spProfesionalConEspecialidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClinicaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spProfesionalenClinica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClinicaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spProfesionalSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SucursalID" Type="int" Mode="In" />
+          <Parameter Name="Clinica" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSucursalId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ClinicaModelStoreContainer">
+          <EntitySet Name="Atencion" EntityType="Self.Atencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinica" EntityType="Self.Clinica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinica_profesinales_especialidad" EntityType="Self.Clinica_profesinales_especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clinica_profesionales" EntityType="Self.Clinica_profesionales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiasSemana" EntityType="Self.DiasSemana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localidad" EntityType="Self.Localidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="obra_social" EntityType="Self.obra_social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sucursales_profesionales_especialidades" EntityType="Self.sucursales_profesionales_especialidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Atencion__DiaId__308E3499" Association="Self.FK__Atencion__DiaId__308E3499">
+            <End Role="DiasSemana" EntitySet="DiasSemana" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencion__Sucurs__2F9A1060" Association="Self.FK__Atencion__Sucurs__2F9A1060">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_cl__08B54D69" Association="Self.FK__Clinica_p__id_cl__08B54D69">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_cp__1332DBDC" Association="Self.FK__Clinica_p__id_cp__1332DBDC">
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_es__14270015" Association="Self.FK__Clinica_p__id_es__14270015">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_pr__07C12930" Association="Self.FK__Clinica_p__id_pr__07C12930">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacientes__ObraI__5224328E" Association="Self.FK__Pacientes__ObraI__5224328E">
+            <End Role="obra_social" EntitySet="obra_social" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacientes__Perso__51300E55" Association="Self.FK__Pacientes__Perso__51300E55">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Locali__4AB81AF0" Association="Self.FK__Sucursal__Locali__4AB81AF0">
+            <End Role="Localidad" EntitySet="Localidad" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Sucurs__6E01572D" Association="Self.FK__Sucursal__Sucurs__6E01572D">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursale__id_cp__17036CC0" Association="Self.FK__sucursale__id_cp__17036CC0">
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursale__id_su__17F790F9" Association="Self.FK__sucursale__id_su__17F790F9">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursales___dia__3D2915A8" Association="Self.FK__sucursales___dia__3D2915A8">
+            <End Role="DiasSemana" EntitySet="DiasSemana" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_per__2CBDA3B5" Association="Self.FK__Usuarios__id_per__2CBDA3B5">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfesionalPersona" Association="Self.FKProfesionalPersona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FKUsuarioRol" Association="Self.FKUsuarioRol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FKUsuarioTipo" Association="Self.FKUsuarioTipo">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="Localidad_Provincia" Association="Self.Localidad_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Localidad" EntitySet="Localidad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClinicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Atencion">
+          <Key>
+            <PropertyRef Name="AtencionId" />
+          </Key>
+          <Property Name="AtencionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SucursalId" Type="Int32" />
+          <Property Name="Desde" Type="Time" Precision="7" />
+          <Property Name="Hasta" Type="Time" Precision="7" />
+          <Property Name="DiaId" Type="Int32" />
+          <NavigationProperty Name="DiasSemana" Relationship="Self.FK__Atencion__DiaId__308E3499" FromRole="Atencion" ToRole="DiasSemana" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Atencion__Sucurs__2F9A1060" FromRole="Atencion" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Clinica">
+          <Key>
+            <PropertyRef Name="ClinicaId" />
+          </Key>
+          <Property Name="ClinicaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Photopath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clinica_profesionales" Relationship="Self.FK__Clinica_p__id_cl__08B54D69" FromRole="Clinica" ToRole="Clinica_profesionales" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Sucurs__6E01572D" FromRole="Clinica" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Clinica_profesinales_especialidad">
+          <Key>
+            <PropertyRef Name="id_cpe" />
+          </Key>
+          <Property Name="id_cpe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cp" Type="Int32" />
+          <Property Name="id_especialidad" Type="Int32" />
+          <NavigationProperty Name="Clinica_profesionales" Relationship="Self.FK__Clinica_p__id_cp__1332DBDC" FromRole="Clinica_profesinales_especialidad" ToRole="Clinica_profesionales" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK__Clinica_p__id_es__14270015" FromRole="Clinica_profesinales_especialidad" ToRole="Especialidad" />
+          <NavigationProperty Name="sucursales_profesionales_especialidades" Relationship="Self.FK__sucursale__id_cp__17036CC0" FromRole="Clinica_profesinales_especialidad" ToRole="sucursales_profesionales_especialidades" />
+        </EntityType>
+        <EntityType Name="Clinica_profesionales">
+          <Key>
+            <PropertyRef Name="id_PC" />
+          </Key>
+          <Property Name="id_PC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_profesional" Type="Int32" />
+          <Property Name="id_clinica" Type="Int32" />
+          <NavigationProperty Name="Clinica" Relationship="Self.FK__Clinica_p__id_cl__08B54D69" FromRole="Clinica_profesionales" ToRole="Clinica" />
+          <NavigationProperty Name="Clinica_profesinales_especialidad" Relationship="Self.FK__Clinica_p__id_cp__1332DBDC" FromRole="Clinica_profesionales" ToRole="Clinica_profesinales_especialidad" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FK__Clinica_p__id_pr__07C12930" FromRole="Clinica_profesionales" ToRole="Profesional" />
+        </EntityType>
+        <EntityType Name="DiasSemana">
+          <Key>
+            <PropertyRef Name="id_dia" />
+          </Key>
+          <Property Name="id_dia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Atencion" Relationship="Self.FK__Atencion__DiaId__308E3499" FromRole="DiasSemana" ToRole="Atencion" />
+          <NavigationProperty Name="sucursales_profesionales_especialidades" Relationship="Self.FK__sucursales___dia__3D2915A8" FromRole="DiasSemana" ToRole="sucursales_profesionales_especialidades" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="EspecialidadId" />
+          </Key>
+          <Property Name="EspecialidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Clinica_profesinales_especialidad" Relationship="Self.FK__Clinica_p__id_es__14270015" FromRole="Especialidad" ToRole="Clinica_profesinales_especialidad" />
+        </EntityType>
+        <EntityType Name="Localidad">
+          <Key>
+            <PropertyRef Name="LocalidadId" />
+          </Key>
+          <Property Name="LocalidadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProvinciaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Locali__4AB81AF0" FromRole="Localidad" ToRole="Sucursal" />
+          <NavigationProperty Name="Provincia" Relationship="Self.Localidad_Provincia" FromRole="Localidad" ToRole="Provincia" />
+        </EntityType>
+        <EntityType Name="obra_social">
+          <Key>
+            <PropertyRef Name="ObraId" />
+          </Key>
+          <Property Name="ObraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Pacientes__ObraI__5224328E" FromRole="obra_social" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="PacienteID" />
+          </Key>
+          <Property Name="PacienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_credencial" Type="Int32" />
+          <Property Name="ObraId" Type="Int32" />
+          <Property Name="photopath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="obra_social" Relationship="Self.FK__Pacientes__ObraI__5224328E" FromRole="Pacientes" ToRole="obra_social" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Pacientes__Perso__51300E55" FromRole="Pacientes" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Documento" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK__Pacientes__Perso__51300E55" FromRole="Persona" ToRole="Pacientes" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__id_per__2CBDA3B5" FromRole="Persona" ToRole="Usuarios" />
+          <NavigationProperty Name="Profesional" Relationship="Self.FKProfesionalPersona" FromRole="Persona" ToRole="Profesional" />
+        </EntityType>
+        <EntityType Name="Profesional">
+          <Key>
+            <PropertyRef Name="ProfesionalId" />
+          </Key>
+          <Property Name="ProfesionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonaId" Type="Int32" Nullable="false" />
+          <Property Name="MatriculaNacional" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MatriculaProvincial" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Creado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modificado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Photopath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clinica_profesionales" Relationship="Self.FK__Clinica_p__id_pr__07C12930" FromRole="Profesional" ToRole="Clinica_profesionales" />
+          <NavigationProperty Name="Persona" Relationship="Self.FKProfesionalPersona" FromRole="Profesional" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="ProvinciaId" />
+          </Key>
+          <Property Name="ProvinciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Localidad" Relationship="Self.Localidad_Provincia" FromRole="Provincia" ToRole="Localidad" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FKUsuarioRol" FromRole="Rol" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="SucursalId" />
+          </Key>
+          <Property Name="SucursalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClinicaId" Type="Int32" />
+          <Property Name="LocalidadId" Type="Int32" />
+          <Property Name="Photopath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Altura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Consultorios" Type="Int32" />
+          <NavigationProperty Name="Atencion" Relationship="Self.FK__Atencion__Sucurs__2F9A1060" FromRole="Sucursal" ToRole="Atencion" />
+          <NavigationProperty Name="Clinica" Relationship="Self.FK__Sucursal__Sucurs__6E01572D" FromRole="Sucursal" ToRole="Clinica" />
+          <NavigationProperty Name="Localidad" Relationship="Self.FK__Sucursal__Locali__4AB81AF0" FromRole="Sucursal" ToRole="Localidad" />
+          <NavigationProperty Name="sucursales_profesionales_especialidades" Relationship="Self.FK__sucursale__id_su__17F790F9" FromRole="Sucursal" ToRole="sucursales_profesionales_especialidades" />
+        </EntityType>
+        <EntityType Name="sucursales_profesionales_especialidades">
+          <Key>
+            <PropertyRef Name="id_spe" />
+          </Key>
+          <Property Name="id_spe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cpe" Type="Int32" />
+          <Property Name="id_sucursal" Type="Int32" />
+          <Property Name="dia" Type="Int32" Nullable="false" />
+          <Property Name="Hora_inicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Hora_fin" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Clinica_profesinales_especialidad" Relationship="Self.FK__sucursale__id_cp__17036CC0" FromRole="sucursales_profesionales_especialidades" ToRole="Clinica_profesinales_especialidad" />
+          <NavigationProperty Name="DiasSemana" Relationship="Self.FK__sucursales___dia__3D2915A8" FromRole="sucursales_profesionales_especialidades" ToRole="DiasSemana" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__sucursale__id_su__17F790F9" FromRole="sucursales_profesionales_especialidades" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="TipoUsuarioId" />
+          </Key>
+          <Property Name="TipoUsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FKUsuarioTipo" FromRole="TipoUsuario" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoUsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Creado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modificado" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_persona" Type="Int32" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuarios__id_per__2CBDA3B5" FromRole="Usuarios" ToRole="Persona" />
+          <NavigationProperty Name="Rol" Relationship="Self.FKUsuarioRol" FromRole="Usuarios" ToRole="Rol" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FKUsuarioTipo" FromRole="Usuarios" ToRole="TipoUsuario" />
+        </EntityType>
+        <Association Name="FK__Atencion__DiaId__308E3499">
+          <End Role="DiasSemana" Type="Self.DiasSemana" Multiplicity="0..1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiasSemana">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="DiaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Atencion__Sucurs__2F9A1060">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="Atencion" Type="Self.Atencion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Principal>
+            <Dependent Role="Atencion">
+              <PropertyRef Name="SucursalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_cl__08B54D69">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="0..1" />
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Clinica_profesionales">
+              <PropertyRef Name="id_clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Sucurs__6E01572D">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_cp__1332DBDC">
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="0..1" />
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica_profesionales">
+              <PropertyRef Name="id_PC" />
+            </Principal>
+            <Dependent Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_cp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_es__14270015">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="EspecialidadId" />
+            </Principal>
+            <Dependent Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursale__id_cp__17036CC0">
+          <End Role="Clinica_profesinales_especialidad" Type="Self.Clinica_profesinales_especialidad" Multiplicity="0..1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica_profesinales_especialidad">
+              <PropertyRef Name="id_cpe" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="id_cpe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clinica_p__id_pr__07C12930">
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="0..1" />
+          <End Role="Clinica_profesionales" Type="Self.Clinica_profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesional">
+              <PropertyRef Name="ProfesionalId" />
+            </Principal>
+            <Dependent Role="Clinica_profesionales">
+              <PropertyRef Name="id_profesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursales___dia__3D2915A8">
+          <End Role="DiasSemana" Type="Self.DiasSemana" Multiplicity="1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiasSemana">
+              <PropertyRef Name="id_dia" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="dia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sucursal__Locali__4AB81AF0">
+          <End Role="Localidad" Type="Self.Localidad" Multiplicity="0..1" />
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="LocalidadId" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="LocalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Localidad_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Localidad" Type="Self.Localidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="ProvinciaId" />
+            </Principal>
+            <Dependent Role="Localidad">
+              <PropertyRef Name="ProvinciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacientes__ObraI__5224328E">
+          <End Role="obra_social" Type="Self.obra_social" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="obra_social">
+              <PropertyRef Name="ObraId" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="ObraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacientes__Perso__51300E55">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__id_per__2CBDA3B5">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfesionalPersona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Profesional" Type="Self.Profesional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Profesional">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUsuarioRol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sucursale__id_su__17F790F9">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="sucursales_profesionales_especialidades" Type="Self.sucursales_profesionales_especialidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Principal>
+            <Dependent Role="sucursales_profesionales_especialidades">
+              <PropertyRef Name="id_sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKUsuarioTipo">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="TipoUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ClinicaEntidad" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Atencion" EntityType="Self.Atencion" />
+          <EntitySet Name="Clinica" EntityType="Self.Clinica" />
+          <EntitySet Name="Clinica_profesinales_especialidad" EntityType="Self.Clinica_profesinales_especialidad" />
+          <EntitySet Name="Clinica_profesionales" EntityType="Self.Clinica_profesionales" />
+          <EntitySet Name="DiasSemana" EntityType="Self.DiasSemana" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+          <EntitySet Name="Localidad" EntityType="Self.Localidad" />
+          <EntitySet Name="obra_social" EntityType="Self.obra_social" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Profesional" EntityType="Self.Profesional" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+          <EntitySet Name="sucursales_profesionales_especialidades" EntityType="Self.sucursales_profesionales_especialidades" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Atencion__DiaId__308E3499" Association="Self.FK__Atencion__DiaId__308E3499">
+            <End Role="DiasSemana" EntitySet="DiasSemana" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Atencion__Sucurs__2F9A1060" Association="Self.FK__Atencion__Sucurs__2F9A1060">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Atencion" EntitySet="Atencion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_cl__08B54D69" Association="Self.FK__Clinica_p__id_cl__08B54D69">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Sucurs__6E01572D" Association="Self.FK__Sucursal__Sucurs__6E01572D">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_cp__1332DBDC" Association="Self.FK__Clinica_p__id_cp__1332DBDC">
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_es__14270015" Association="Self.FK__Clinica_p__id_es__14270015">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursale__id_cp__17036CC0" Association="Self.FK__sucursale__id_cp__17036CC0">
+            <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clinica_p__id_pr__07C12930" Association="Self.FK__Clinica_p__id_pr__07C12930">
+            <End Role="Profesional" EntitySet="Profesional" />
+            <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursales___dia__3D2915A8" Association="Self.FK__sucursales___dia__3D2915A8">
+            <End Role="DiasSemana" EntitySet="DiasSemana" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sucursal__Locali__4AB81AF0" Association="Self.FK__Sucursal__Locali__4AB81AF0">
+            <End Role="Localidad" EntitySet="Localidad" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
+          <AssociationSet Name="Localidad_Provincia" Association="Self.Localidad_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Localidad" EntitySet="Localidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacientes__ObraI__5224328E" Association="Self.FK__Pacientes__ObraI__5224328E">
+            <End Role="obra_social" EntitySet="obra_social" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacientes__Perso__51300E55" Association="Self.FK__Pacientes__Perso__51300E55">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_per__2CBDA3B5" Association="Self.FK__Usuarios__id_per__2CBDA3B5">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfesionalPersona" Association="Self.FKProfesionalPersona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Profesional" EntitySet="Profesional" />
+          </AssociationSet>
+          <AssociationSet Name="FKUsuarioRol" Association="Self.FKUsuarioRol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sucursale__id_su__17F790F9" Association="Self.FK__sucursale__id_su__17F790F9">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="sucursales_profesionales_especialidades" EntitySet="sucursales_profesionales_especialidades" />
+          </AssociationSet>
+          <AssociationSet Name="FKUsuarioTipo" Association="Self.FKUsuarioTipo">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="spDiasAtencion" ReturnType="Collection(ClinicaModel.spDiasAtencion_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDiasAtencionAsignados" ReturnType="Collection(ClinicaModel.spDiasAtencionAsignados_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEspecialidadProfesional" ReturnType="Collection(ClinicaModel.spEspecialidadProfesional_Result)">
+            <Parameter Name="ProfesionalID" Mode="In" Type="Int32" />
+            <Parameter Name="ClinicaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spProfesionalClinica" ReturnType="Collection(ClinicaModel.spProfesionalClinica_Result)">
+            <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spProfesionalClinicaEspecialidadInicio" ReturnType="Collection(ClinicaModel.spProfesionalClinicaEspecialidadInicio_Result)" />
+          <FunctionImport Name="spProfesionalConEspecialidad" ReturnType="Collection(ClinicaModel.spProfesionalConEspecialidad_Result)">
+            <Parameter Name="ClinicaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spProfesionalenClinica" ReturnType="Collection(ClinicaModel.spProfesionalenClinica_Result)">
+            <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spProfesionalSucursal" ReturnType="Collection(ClinicaModel.spProfesionalSucursal_Result)">
+            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+            <Parameter Name="Clinica" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSucursalId" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+        <ComplexType Name="spDiasAtencion_Result">
+          <Property Type="Int32" Name="id_dia" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDiasAtencionAsignados_Result">
+          <Property Type="String" Name="Dias" Nullable="true" MaxLength="50" />
+          <Property Type="Time" Name="Desde" Nullable="true" />
+          <Property Type="Time" Name="Hasta" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spEspecialidadProfesional_Result">
+          <Property Type="Int32" Name="EspecialidadId" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spProfesionalClinica_Result">
+          <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Photopath" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Documento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spProfesionalClinicaEspecialidadInicio_Result">
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Photopath" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="clinica" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spProfesionalConEspecialidad_Result">
+          <Property Type="Int32" Name="id_cpe" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spProfesionalenClinica_Result">
+          <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Photopath" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Documento" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spProfesionalSucursal_Result">
+          <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Photopath" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Documento" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClinicaModelStoreContainer" CdmEntityContainer="ClinicaEntidad">
+          <EntitySetMapping Name="Atencion">
+            <EntityTypeMapping TypeName="ClinicaModel.Atencion">
+              <MappingFragment StoreEntitySet="Atencion">
+                <ScalarProperty Name="AtencionId" ColumnName="AtencionId" />
+                <ScalarProperty Name="SucursalId" ColumnName="SucursalId" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="DiaId" ColumnName="DiaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinica">
+            <EntityTypeMapping TypeName="ClinicaModel.Clinica">
+              <MappingFragment StoreEntitySet="Clinica">
+                <ScalarProperty Name="ClinicaId" ColumnName="ClinicaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinica_profesinales_especialidad">
+            <EntityTypeMapping TypeName="ClinicaModel.Clinica_profesinales_especialidad">
+              <MappingFragment StoreEntitySet="Clinica_profesinales_especialidad">
+                <ScalarProperty Name="id_cpe" ColumnName="id_cpe" />
+                <ScalarProperty Name="id_cp" ColumnName="id_cp" />
+                <ScalarProperty Name="id_especialidad" ColumnName="id_especialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinica_profesionales">
+            <EntityTypeMapping TypeName="ClinicaModel.Clinica_profesionales">
+              <MappingFragment StoreEntitySet="Clinica_profesionales">
+                <ScalarProperty Name="id_PC" ColumnName="id_PC" />
+                <ScalarProperty Name="id_profesional" ColumnName="id_profesional" />
+                <ScalarProperty Name="id_clinica" ColumnName="id_clinica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiasSemana">
+            <EntityTypeMapping TypeName="ClinicaModel.DiasSemana">
+              <MappingFragment StoreEntitySet="DiasSemana">
+                <ScalarProperty Name="id_dia" ColumnName="id_dia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidad">
+            <EntityTypeMapping TypeName="ClinicaModel.Especialidad">
+              <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="EspecialidadId" ColumnName="EspecialidadId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localidad">
+            <EntityTypeMapping TypeName="ClinicaModel.Localidad">
+              <MappingFragment StoreEntitySet="Localidad">
+                <ScalarProperty Name="LocalidadId" ColumnName="LocalidadId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="obra_social">
+            <EntityTypeMapping TypeName="ClinicaModel.obra_social">
+              <MappingFragment StoreEntitySet="obra_social">
+                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="ClinicaModel.Pacientes">
+              <MappingFragment StoreEntitySet="Pacientes">
+                <ScalarProperty Name="PacienteID" ColumnName="PacienteID" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Numero_credencial" ColumnName="Numero_credencial" />
+                <ScalarProperty Name="ObraId" ColumnName="ObraId" />
+                <ScalarProperty Name="photopath" ColumnName="photopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="ClinicaModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesional">
+            <EntityTypeMapping TypeName="ClinicaModel.Profesional">
+              <MappingFragment StoreEntitySet="Profesional">
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="MatriculaNacional" ColumnName="MatriculaNacional" />
+                <ScalarProperty Name="MatriculaProvincial" ColumnName="MatriculaProvincial" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="ClinicaModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="ClinicaModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="ClinicaModel.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="SucursalId" ColumnName="SucursalId" />
+                <ScalarProperty Name="ClinicaId" ColumnName="ClinicaId" />
+                <ScalarProperty Name="LocalidadId" ColumnName="LocalidadId" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="Calle" ColumnName="Calle" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Consultorios" ColumnName="Consultorios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursales_profesionales_especialidades">
+            <EntityTypeMapping TypeName="ClinicaModel.sucursales_profesionales_especialidades">
+              <MappingFragment StoreEntitySet="sucursales_profesionales_especialidades">
+                <ScalarProperty Name="id_spe" ColumnName="id_spe" />
+                <ScalarProperty Name="id_cpe" ColumnName="id_cpe" />
+                <ScalarProperty Name="id_sucursal" ColumnName="id_sucursal" />
+                <ScalarProperty Name="dia" ColumnName="dia" />
+                <ScalarProperty Name="Hora_inicio" ColumnName="Hora_inicio" />
+                <ScalarProperty Name="Hora_fin" ColumnName="Hora_fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="ClinicaModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="TipoUsuarioId" ColumnName="TipoUsuarioId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ClinicaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="TipoUsuarioId" ColumnName="TipoUsuarioId" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Creado" ColumnName="Creado" />
+                <ScalarProperty Name="Modificado" ColumnName="Modificado" />
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDiasAtencion" FunctionName="ClinicaModel.Store.spDiasAtencion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spDiasAtencion_Result">
+                <ScalarProperty Name="id_dia" ColumnName="id_dia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDiasAtencionAsignados" FunctionName="ClinicaModel.Store.spDiasAtencionAsignados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spDiasAtencionAsignados_Result">
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEspecialidadProfesional" FunctionName="ClinicaModel.Store.spEspecialidadProfesional">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spEspecialidadProfesional_Result">
+                <ScalarProperty Name="EspecialidadId" ColumnName="EspecialidadId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProfesionalClinica" FunctionName="ClinicaModel.Store.spProfesionalClinica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spProfesionalClinica_Result">
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProfesionalClinicaEspecialidadInicio" FunctionName="ClinicaModel.Store.spProfesionalClinicaEspecialidadInicio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spProfesionalClinicaEspecialidadInicio_Result">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="clinica" ColumnName="clinica" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProfesionalConEspecialidad" FunctionName="ClinicaModel.Store.spProfesionalConEspecialidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spProfesionalConEspecialidad_Result">
+                <ScalarProperty Name="id_cpe" ColumnName="id_cpe" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProfesionalenClinica" FunctionName="ClinicaModel.Store.spProfesionalenClinica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spProfesionalenClinica_Result">
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spProfesionalSucursal" FunctionName="ClinicaModel.Store.spProfesionalSucursal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicaModel.spProfesionalSucursal_Result">
+                <ScalarProperty Name="ProfesionalId" ColumnName="ProfesionalId" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Photopath" ColumnName="Photopath" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSucursalId" FunctionName="ClinicaModel.Store.spSucursalId" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

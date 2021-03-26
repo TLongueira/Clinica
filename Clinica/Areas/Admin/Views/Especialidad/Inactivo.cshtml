@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Especialidad>
+
+@{
+    ViewBag.Title = "Inactivos";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"style="background-color: #0d0c0d;">
+                <h1></h1><h1></h1>
+                <h6 class="m-0 font-weight-bold text-white">Listado especialidades inactivas</h6>
+                <p>
+                    <a href="@Url.Action("Index")" class="d-none d-sm-inline-block btn btn-sm btn-outline-success"><i class="fas fa-home fa-sm text-white-50"></i> Inicio</a>
+                    <a href="@Url.Action("Crear")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i>Agregar Especialidad</a>
+                </p>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>Descripcion</th>
+                        <th>Activo</th>
+                        <th> </th>
+                        <th>Acciones</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Descripcion</td>
+                            <td>@item.Activo</td>
+                            <td> </td>
+                            <td>
+                                <a href="@Url.Action("Editar", new { id = item.EspecialidadId })" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <a href="@Url.Action("Detalles", new { id = item.EspecialidadId })" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                <a href="@Url.Action("Activar", new { id = item.EspecialidadId })" class="btn btn-outline-success"><i class="fas fa-toggle-on border-dark"></i> Activo</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,222 @@
+﻿@model Profesional
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="hero-section">
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" style="background-color:#17145e" data-set bg="~/imagenes/bg.jpg">
+            <div class="container">
+                <h2>Los mejores profesionales</h2>
+                <p>Contamos con los mejores medicos</p>
+                <p>Para brindarte el mejor servicio</p>
+                <div class="clearfix"></div>
+                <a href="" class="site-btn sb-c1">Leer mas</a>
+            </div>
+        </div>
+        <div class="hs-item set-bg" style="background-color:forestgreen" data-setbg="~/imagenes/bg.jpg">
+            <div class="container">
+                <h2>El mejor diseño</h2>
+                <p></p>
+                <p></p>
+                <div class="clearfix"></div>
+                <a href="" class="site-btn sb-c1">Estoy enamorao de ti</a>
+            </div>
+        </div>
+        <div class="hs-item set-bg" style="background-color:#d31515" data-set bg="~/imagenes/bg.jpg">
+            <div class="container">
+                <h2>Actualizaciones proximamente...</h2>
+                <p>Hemos estado recibiendo sus inquietudes sobre la pagina para mejorar su experiencia, tales mejoras incluiran:</p>
+                <h1></h1>
+                <p>Aplicacion movil para gestion de horarios</p><h1></h1>
+                <p>Solucion para los errores con la compatibilidad</p><h1></h1>
+                <p>y mucho más...</p>
+                <div class="clearfix"></div>
+                <a href="" class="site-btn sb-c1">Leer mas</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero section end -->
+<!-- Feature section -->
+<section class="feature-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 feature">
+                <img src="~/imagenes/doctor.png" height="120" width="120" alt="#">
+                <h4>Profesionales</h4>
+                <p>Disponemos de los mejores profesionales para cada tipo de especialidad, distribuidos en distintas sucursales para que puedas manejarte sin problema. </p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="~/imagenes/hospital.png" height="120" width="120" alt="#">
+                <h4>Clinicas</h4>
+                <p>Distintas clinincas distribuidas a lo largo del pais para que puedas organizarte de la manera mas comoda posible.</p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="~/imagenes/estrella.png" height="120" width="120" alt="#">
+                <h4>Especialidades</h4>
+                <p>Disponemos de una gran variedad de especialidades para que puedas disfrutar de la mas amplia cobertura media en nuestras instalaciones.</p>
+            </div>
+            <div class="col-md-3 feature">
+                <img src="~/imagenes/carnet-de-identidad.png" height="120" width="120" alt="#">
+                <h4>Obra social</h4>
+                <p>Un catalogó con todas las obra sociales asociadas a nuestras clinicas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Feature section end -->
+<!-- Services section -->
+@*<section class="Services-section spad set-bg" style="background-color:grey" @*data-setbg="~/imagenes/service-bg.jpg">
+        <div class="container">
+            <div class="section-title text-white">
+                <p>Inigualables</p>
+                <h2>Nuestro servicios</h2>
+            </div>
+            <div class="row services-circle">
+                <div class="col-lg-5 col-md-6">
+                    <ul class="service-list service-list-left text-white">
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/1.png" alt="">
+                            </div>
+                            <div class="sl-content">
+                                <h4>Dominio libre</h4>
+                                <p>No se que decir ya me canse de mandar chamuyo a cada cosa que tengo que cambiar.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/2.png" alt="">
+                            </div>
+                            <div class="sl-content">
+                                <h4>Hosting compartido</h4>
+                                <p>Al derivarte con otro profesional este puede ver tu historial al instante, sin tenes que ester presentando estudios medicos.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/3.png" alt=""/>
+                            </div>
+                            <div class="sl-content">
+                                <h4>Asistencia remota</h4>
+                                <p>Podes contactarte con nuestros profesionales via email o chat en vivo para responder tus dudas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 offset-lg-2 col-md-6">
+                    <ul class="service-list service-list-right text-white">
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/4.png" alt="">
+                            </div>
+                            <div class="sl-content">
+                                <h4>Servicio de atencion las 24hs</h4>
+                                <p>Podes quedarte tranquilo que poseemos un servicio de 24hs para poder ayudarte siempre que lo necesites.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/5.png" alt="">
+                            </div>
+                            <div class="sl-content">
+                                <h4>Base datos inteligente</h4>
+                                <p>No necesitas andar descargando archivos de tus resultados nosotros lo mantenemos en nuestros servidores.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sl-icon">
+                                <img src="~/imagenes/service-icons/6.png" alt="">
+                            </div>
+                            <div class="sl-content">
+                                <h4>Nube</h4>
+                                <p>No tenes que andar cargando archivos, nosotros tenemos tu historial en la nube para que puedas consultarlo cuando quieras.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service-main-circle">
+                    <img src="~/imagenes/service-circle-pic.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>*@
+<!-- Services section end -->
+<!-- About section -->
+@*<section class="about-section spad">
+        <div class="container">
+            <div class="section-title">
+                <p>The only ones</p>
+                <h2>We Generate Trust</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 about-img">
+                    <img src="~/imagenes/about.png" alt="">
+                </div>
+                <div class="col-lg-7 about-text">
+                    <p>Phasellus vehicula tempus orci vel consequat. Nullam lorem sem, viverra a rutrum sed, gravida mattis magna. Suspendisse vitae commodo quam. Quisque a enim et ante vulputate finibus nec laoreet ipsum. Etiam lobortis erat vel ullamcorper tristique. Morbi pellentesque orci augue, quis finibus justo accumsan nec. Donec imperdiet sodales lectus sed consectetur. Mauris dignissim</p>
+                    <ul class="about-list">
+                        <li>Nullam lorem sem, viverra a rutrum</li>
+                        <li>Etiam lobortis erat vel ullamcorper</li>
+                        <li>Sed ultrices interdum libero, laoreet </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>*@
+<!-- About section end -->
+<!-- Milestones section -->
+<section class="milestones-section">
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="milestone-icon">
+                        <img src="~/imagenes/milestone-icons/1.png" alt="">
+                    </div>
+                    <div class="milestone-text text-white">
+                        <h2>@ViewData["Profesionales"]</h2>
+                        <p>Profesionales</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="milestone-icon">
+                        <img src="~/imagenes/milestone-icons/2.png" alt="">
+                    </div>
+                    <div class="milestone-text text-white">
+                        <h2>@ViewData["Sucursales"]</h2>
+                        <p>Sucursal</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="milestone-icon">
+                        <img src="~/imagenes/milestone-icons/3.png" alt="">
+                    </div>
+                    <div class="milestone-text text-white">
+                        <h2>@ViewData["Especialidad"]</h2>
+                        <p>Especialidades</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="milestone-icon">
+                        <img src="~/imagenes/milestone-icons/4.png" alt="">
+                    </div>
+                    <div class="milestone-text text-white">
+                        <h2>@ViewData["Pacientes"]</h2>
+                        <p>Pacientes</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+<!-- Milestones section end -->
+<!-- Banner section -->
+<section class="banner-section set-bg" data-setbg="~/imagenes/banner-bg.jpg">
+    <div class="container">
+        <div class="banner-card">
+            <h2>Estamos para ayudarte a empezar</h2>
+            <h6>Realice una serie de pasos para poder pedir un turno con un profesional</h6>
+            <a href="@Url.Action("Iniciar","Sesion")" class="site-btn sb-c3">Iniciar sesion</a>
+        </div>
+    </div>
+</section>

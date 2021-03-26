@@ -1,0 +1,44 @@
+﻿@model Atencion
+@{
+
+    ViewBag.Title = "AsignarHorarios";
+
+    Sucursal sucursal = ViewBag.Sucursal;
+}
+
+<h2>Asignar Horario a @sucursal.Nombre</h2>
+
+@using (Html.BeginForm("AsignarHorarios","Clinicas",FormMethod.Post))
+{
+    @Html.Hidden("SucursalId", sucursal.SucursalId)
+
+<div class="form-horizontal">
+    <hr />
+    <div class="col-12 col-md-6">
+        <div class="form-group">
+            <label for="id_dia">Dia de semana</label>
+            @Html.DropDownList("id_dia", (SelectList)ViewBag.dia, "Seleccione un dia", htmlAttributes: new { @class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Desde, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @class = "form-control", placeholder = "Hora/minuto", Type = "time" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Hasta, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", placeholder = "Hora/minuto", Type = "time" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="AsignarHorarios" class="btn btn-success"  />
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Profesional>
+@using Clinica.Extensions;
+@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Common;
+@using X.PagedList;
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4 bg-dark">
+            <div class="form-inline col-12 justify-content-end" ">
+                <div class="form-group mx-sm-3 mb-2 mt-2">
+                    <label for="filtro" class="sr-only">Buscar</label>
+                    <input type="text" id="filtro" class="form-control" placeholder="Buscar" value="@ViewBag.Filtro" />
+                </div>
+                <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Limpiar" id="btnReload">
+                    <i class="fas fa-sync"></i>
+                </button> |
+                <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Buscar" id="btnBuscar">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #0d0c0d">
+                <h1></h1>
+                <h6 class="m-0 font-weight-bold text-white">Listado de Profesionales</h6>
+                <p>
+                    <a href="@Url.Action("Inactivo")" class="d-none d-sm-inline-block btn btn-sm btn-outline-dark shadow-sm" data-toggle="tooltip" data-placement="top" title="Activar profesionales"><i class="fas fa-toggle-on fa-sm text-white-50" style="color:grey"></i></a>
+                    <a href="@Url.Action("Crear")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Agregar profesional"><i class="fas fa-plus fa-sm text-white-50"></i></a>
+                </p>
+            </div>
+            <div class="card-body bg-white ">
+                <table class="table ">
+                    <tr class="text-black">
+                        <th>Foto</th>
+                        <th>@Html.SortLink("Persona.Apellido", "Apellido")</th>
+                        <th>@Html.SortLink("MatriculaNacional", "Matricula Nacional")</th>
+                        <th>@Html.SortLink("MatriculaProvincial", "Matricula Provincial")</th>
+                        <th>@Html.SortLink("Creado", "Ingreso")</th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        var foto = item.Photopath;
+                        if (item.Photopath == null)
+                        {
+
+                            foto = "/imagenes/noimage.jpg";
+                        }
+                        <tr class="text-gray-700">
+                            <td><img src="@foto" alt="No hay foto" width="70" height="70" class="rounded-circle z-depth-1-half avatar-pic ui-resizable" /></td>
+                            <td>@item.Persona.Apellido, @item.Persona.Nombre </td>
+                            <td>@item.MatriculaNacional</td>
+                            <td>@item.MatriculaProvincial </td>
+                            <td>@item.Creado.ToShortDateString() </td>
+                            <td align="right">
+                                |<a href="@Url.Action("Editar", new { id = item.ProfesionalId })" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>|
+                                |<button class="btn btn-primary boton_detalle"
+                                         data-id="@item.ProfesionalId"
+                                         data-nombre="@item.Persona.Apellido, @item.Persona.Nombre"
+                                         data-toggle="tooltip" data-placement="top" title="Detalles">
+                                    <i class="fas fa-eye"></i>
+                                </button>|
+                                 <button class="btn btn-dark" data-id="@item.ProfesionalId" data-toggle="tooltip" data-placement="top" title="Desactivar2"><i class="fas fa-toggle-off"></i></button>
+                                |<a href="@Url.Action("Borrar", new { id = item.ProfesionalId })" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Desactivar"><i class="fas fa-toggle-off"></i></a>|
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="row justify-content-center">
+                    @Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", Pager.GetLink(pagina)),
+                    new PagedListRenderOptions
+                    {
+                        LiElementClasses = new string[] { "page-item" },
+                        PageClasses = new string[] { "page-link" },
+                        LinkToFirstPageFormat = "Primera",
+                        LinkToPreviousPageFormat = "<",
+                        LinkToNextPageFormat = ">",
+                        LinkToLastPageFormat = "&Uacute;ltima",
+                        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                    })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="modal_profesional">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title align-self-center" id="titulo_modal"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body" id="cuerpo_modal">
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/Scripts/Modulos/Admin/Profesionales/index.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Profesionales/Buscador.js"></script>
+}

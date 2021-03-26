@@ -1,0 +1,67 @@
+﻿@model Profesional
+
+<div>
+    <h4>Profesional</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MatriculaNacional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatriculaNacional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatriculaProvincial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatriculaProvincial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modificado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photopath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photopath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

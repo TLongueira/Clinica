@@ -1,0 +1,58 @@
+﻿@model sucursales_profesionales_especialidades
+
+
+@using (Html.BeginForm("HorarioProfesionalok","Clinicas",FormMethod.Post))
+{
+    @Html.HiddenFor(c=>c.Sucursal.SucursalId);
+    <div class="form-horizontal">
+        <h4>Asignar Especialidad a @Html.DisplayFor(s => s.Clinica_profesinales_especialidad.Clinica_profesionales.Profesional.Persona.Nombre)</h4>
+        <hr />
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="form-group">
+                <label for="DiasSemana">Dias</label>
+                @Html.DropDownList("id_dia", (SelectList)ViewBag.Dias, "Seleccione un dia", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="form-group">
+                <label for="Profesionales">Profesionales</label>
+                <select name="Profesionales" class="form-control">
+                    @foreach (var item in (IList<spProfesionalConEspecialidad_Result>)ViewBag.Profesionales)
+                    {
+                        <option value="@item.">@item.Descripcion</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(model => model.Hora_inicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Hora_inicio, new { htmlAttributes = new { @class = "form-control", placeholder = "Inicio", Type = "time" } })
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                @Html.LabelFor(model => model.Hora_fin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Hora_fin, new { htmlAttributes = new { @class = "form-control", placeholder = "Fin", Type = "time" } })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Asignar" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Clinica>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row  align-items-center justify-content-between" style="background-color: #0d0c0d">
+                            <h6></h6>
+                            <h6 class="m-0 font-weight-bold text-white">Listado de clinicas</h6>
+                            <a href="@Url.Action("Crear")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="bottom" title="Agregar clinica"><i class="fas fa-plus fa-sm text-white-50"></i></a>
+                        </div>
+                        <div class="card-body bg-white">
+                            <table class="table text-black">
+                                <tr class="mb-5 text-black">
+                                    <th>Nombre de Clinica</th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="text-gray-700">
+                                        <td><a href="@Url.Action("Detalles", new { id = item.ClinicaId })">@item.Nombre</a></td>
+                                        <td align="right">
+                                            |<a href="@Url.Action("Editar", new { id = item.ClinicaId })" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a>|
+                                            |<a href="@Url.Action("Detalles", new { id = item.ClinicaId })" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Detalles"><i class="fas fa-eye"></i></a>|
+                                            |<a href="@Url.Action("Borrar", new { id = item.ClinicaId })" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Desactivar"><i class="fas fa-toggle-off"></i></a>|
+                                        </td>
+                                    </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

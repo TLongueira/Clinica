@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Iniciar";
+    Layout = "~/Views/Shared/Sesion.cshtml";
+}
+
+<div class="text-center">
+
+    <h1 class="h4 text-white font-weight-bold mb-4">Iniciar Sesion</h1>
+</div>
+@Html.Partial("~/Views/Shared/_Flash.cshtml")
+@using (Html.BeginForm())
+{
+
+    <div class="form-group" id="Login-form">
+
+        <input type="text" id="Dato" class="form-control form-control-user" name="NombreUsuario" aria-describedby="emailHelp" placeholder="Usuario">
+    </div>
+    <div class="form-group">
+        <input type="password" id="Dato" class="form-control form-control-user" name="Clave" placeholder="Contraseña">
+    </div>
+    <div class="form-group">
+        <div class="custom-control custom-checkbox small">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="text-white font-weight-bold custom-control-label" for="customCheck">Recordarme</label>
+        </div>
+    </div>
+    <input type="submit" class="font-weight-bold btn btn-primary btn-user btn-block" value="Iniciar Sesion" />
+
+
+    <hr>
+
+}
+<hr>
+@*<div class="text-center">
+    <a class="small" href="#">Recuperar contraseña</a>
+</div>*@
+<div class="text-center">
+    @Html.ActionLink("Crear Cuenta", "Registrarse")
+    @*("Crear Cuenta", "Registrarse", "Admin/pacientes")*@
+</div>
+@section scripts
+{
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/additional-methods.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/adicional.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/jquery.validate.default.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Validacion/messages_es_AR.min.js"></script>
+    <script src="~/Scripts/Modulos/Admin/Login/Validacion datos.js"></script>
+}

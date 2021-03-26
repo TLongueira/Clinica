@@ -1,0 +1,96 @@
+generar archivos rpd
+
+itextsharp
+
+
+CREATE TABLE [dbo].[Especialidad] (
+    [EspecialidadId] INT           IDENTITY (1, 1) NOT NULL,
+    [Descripcion]    VARCHAR (100) NOT NULL,
+    [Activo]         BIT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([EspecialidadId] ASC)
+);
+
+
+
+
+CREATE TABLE [dbo].[Persona] (
+    [PersonaId]       INT          IDENTITY (1, 1) NOT NULL,
+    [Nombre]          VARCHAR (50) NOT NULL,
+    [Apellido]        VARCHAR (50) NOT NULL,
+    [Documento]       INT          NOT NULL,
+    [Sexo]            CHAR (1)     NULL,
+    [FechaNacimiento] DATE         NULL,
+    PRIMARY KEY CLUSTERED ([PersonaId] ASC)
+);
+
+
+
+
+CREATE TABLE [dbo].[Profesional] (
+    [ProfesionalId]       INT          IDENTITY (1, 1) NOT NULL,
+    [PersonaId]           INT          NOT NULL,
+    [MatriculaNacional]   VARCHAR (10) NULL,
+    [MatriculaProvincial] VARCHAR (10) NULL,
+    [Creado]              DATETIME     NOT NULL,
+    [Modificado]          DATETIME     NOT NULL,
+    [Activo]              BIT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([ProfesionalId] ASC),
+    CONSTRAINT [FKProfesionalPersona] FOREIGN KEY ([PersonaId]) REFERENCES [dbo].[Persona] ([PersonaId])
+);
+
+
+
+
+CREATE TABLE [dbo].[ProfesionalEspecialidad] (
+    [ProfesionalEspecialidadId] INT      IDENTITY (1, 1) NOT NULL,
+    [ProfesionalId]             INT      NOT NULL,
+    [EspecialidadId]            INT      NOT NULL,
+    [Activo]                    BIT      NOT NULL,
+    [FechaAlta]                 DATETIME NOT NULL,
+    [FechaBaja]                 DATETIME NULL,
+    PRIMARY KEY CLUSTERED ([ProfesionalEspecialidadId] ASC),
+    CONSTRAINT [FKPEProfesional] FOREIGN KEY ([ProfesionalId]) REFERENCES [dbo].[Profesional] ([ProfesionalId]),
+    CONSTRAINT [FKPEEspecialidad] FOREIGN KEY ([EspecialidadId]) REFERENCES [dbo].[Especialidad] ([EspecialidadId])
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[Rol] (
+    [RolId]       INT          IDENTITY (1, 1) NOT NULL,
+    [Descripcion] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([RolId] ASC)
+);
+
+
+
+
+
+CREATE TABLE [dbo].[TipoUsuario] (
+    [TipoUsuarioId] INT          IDENTITY (1, 1) NOT NULL,
+    [Descripcion]   VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([TipoUsuarioId] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[Usuario] (
+    [UsuarioId]     INT           IDENTITY (1, 1) NOT NULL,
+    [NombreUsuario] VARCHAR (50)  NOT NULL,
+    [Clave]         VARCHAR (255) NOT NULL,
+    [TipoUsuarioId] INT           NOT NULL,
+    [RolId]         INT           NOT NULL,
+    [Activo]        BIT           DEFAULT ((1)) NOT NULL,
+    [Creado]        DATETIME      NOT NULL,
+    [Modificado]    DATETIME      NOT NULL,
+    PRIMARY KEY CLUSTERED ([UsuarioId] ASC),
+    CONSTRAINT [FKUsuarioTipo] FOREIGN KEY ([TipoUsuarioId]) REFERENCES [dbo].[TipoUsuario] ([TipoUsuarioId]),
+    CONSTRAINT [FKUsuarioRol] FOREIGN KEY ([RolId]) REFERENCES [dbo].[Rol] ([RolId])
+);
+
+

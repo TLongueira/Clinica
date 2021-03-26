@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ingresar</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/Login/Visibilizar_textos.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Login/Difuminado.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="content">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center" id="transparente">
+
+            <div class="col-xl-10 col-lg-12 col-md-9" id="transparente">
+
+                <div class="card o-hidden border-0 shadow-lg p-5 my-5" id="fondonegro">
+                    <div class="card-body p-5" id="blur">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row img-fluid  justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="p-lg-5">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Scripts/sb-admin-2.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+

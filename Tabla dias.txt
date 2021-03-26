@@ -1,0 +1,45 @@
+@foreach (var diaSemana in ViewBag.DiasSemana)
+{
+    <div class="@(diaSemana.IdDia < 6 ? "col-2" : "col-1") p-0 card">
+
+        @{
+            var horarios = Model
+                .Where(h => h.DiaSemana == diaSemana.IdDia)
+                .OrderBy(h => h.HoraDesde);
+
+            var cantidad = horarios.Count();
+
+            foreach (var horario in horarios)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="text-center mt-3">
+                                <h5 class="card-title">
+                                    @horario.ClinicaProfesionalEspecialidad.Especialidad.Descripcion
+                                </h5>
+                            </div>
+                            <div class="text-left ml-2 mb-1">
+                                Sucursal: @horario.Sucursal.Nombre <br />
+                                Horario: @horario.HoraDesde.ToString(@"hh\:mm") - @horario.HoraHasta.ToString(@"hh\:mm") <br />
+                                Duración @horario.CantidadMinutos Minutos <br />
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar Horario"
+                                   href="@Url.Action("EditarHorario", new { Id = horario.HorarioId })">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar Horario"
+                                   href="@Url.Action("EliminarHorario", new { Id = horario.HorarioId })">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+
+    </div>
+}
