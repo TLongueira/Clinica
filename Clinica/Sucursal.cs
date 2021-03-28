@@ -21,7 +21,7 @@ namespace Clinica
             this.sucursales_profesionales_especialidades = new HashSet<sucursales_profesionales_especialidades>();
         }
     
-        public int SucursalId { get; set; }
+        public int? SucursalId { get; set; }
         public Nullable<int> ClinicaId { get; set; }
         public Nullable<int> LocalidadId { get; set; }
         public string Photopath { get; set; }
@@ -32,9 +32,9 @@ namespace Clinica
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Atencion> Atencion { get; set; }
-        public virtual Clinica Clinica { get; set; }
         public virtual Localidad Localidad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sucursales_profesionales_especialidades> sucursales_profesionales_especialidades { get; set; }
+        public virtual Clinica Clinica { get; set; }
     }
 }

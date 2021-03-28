@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Atencion">
           <Key>
             <PropertyRef Name="AtencionId" />
@@ -497,8 +497,7 @@
             <End Role="Localidad" EntitySet="Localidad" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClinicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -524,7 +523,7 @@
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="Photopath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Clinica_profesionales" Relationship="Self.FK__Clinica_p__id_cl__08B54D69" FromRole="Clinica" ToRole="Clinica_profesionales" />
-          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__Sucurs__6E01572D" FromRole="Clinica" ToRole="Sucursal" />
+          <NavigationProperty Name="Sucursal" Relationship="ClinicaModel.FK__Sucursal__Sucurs__6E01572D" FromRole="Clinica" ToRole="Sucursal" />
         </EntityType>
         <EntityType Name="Clinica_profesinales_especialidad">
           <Key>
@@ -655,9 +654,9 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Consultorios" Type="Int32" />
           <NavigationProperty Name="Atencion" Relationship="Self.FK__Atencion__Sucurs__2F9A1060" FromRole="Sucursal" ToRole="Atencion" />
-          <NavigationProperty Name="Clinica" Relationship="Self.FK__Sucursal__Sucurs__6E01572D" FromRole="Sucursal" ToRole="Clinica" />
           <NavigationProperty Name="Localidad" Relationship="Self.FK__Sucursal__Locali__4AB81AF0" FromRole="Sucursal" ToRole="Localidad" />
           <NavigationProperty Name="sucursales_profesionales_especialidades" Relationship="Self.FK__sucursale__id_su__17F790F9" FromRole="Sucursal" ToRole="sucursales_profesionales_especialidades" />
+          <NavigationProperty Name="Clinica" Relationship="ClinicaModel.FK__Sucursal__Sucurs__6E01572D" FromRole="Sucursal" ToRole="Clinica" />
         </EntityType>
         <EntityType Name="sucursales_profesionales_especialidades">
           <Key>
@@ -731,18 +730,6 @@
             </Principal>
             <Dependent Role="Clinica_profesionales">
               <PropertyRef Name="id_clinica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Sucursal__Sucurs__6E01572D">
-          <End Role="Clinica" Type="Self.Clinica" Multiplicity="1" />
-          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Clinica">
-              <PropertyRef Name="ClinicaId" />
-            </Principal>
-            <Dependent Role="Sucursal">
-              <PropertyRef Name="SucursalId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -944,10 +931,6 @@
             <End Role="Clinica" EntitySet="Clinica" />
             <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sucursal__Sucurs__6E01572D" Association="Self.FK__Sucursal__Sucurs__6E01572D">
-            <End Role="Clinica" EntitySet="Clinica" />
-            <End Role="Sucursal" EntitySet="Sucursal" />
-          </AssociationSet>
           <AssociationSet Name="FK__Clinica_p__id_cp__1332DBDC" Association="Self.FK__Clinica_p__id_cp__1332DBDC">
             <End Role="Clinica_profesionales" EntitySet="Clinica_profesionales" />
             <End Role="Clinica_profesinales_especialidad" EntitySet="Clinica_profesinales_especialidad" />
@@ -1005,30 +988,34 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
           <FunctionImport Name="spDiasAtencion" ReturnType="Collection(ClinicaModel.spDiasAtencion_Result)">
-            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+          <Parameter Name="SucursalID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spDiasAtencionAsignados" ReturnType="Collection(ClinicaModel.spDiasAtencionAsignados_Result)">
-            <Parameter Name="SucursalID" Mode="In" Type="Int32" />
+          <Parameter Name="SucursalID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spEspecialidadProfesional" ReturnType="Collection(ClinicaModel.spEspecialidadProfesional_Result)">
             <Parameter Name="ProfesionalID" Mode="In" Type="Int32" />
             <Parameter Name="ClinicaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spProfesionalClinica" ReturnType="Collection(ClinicaModel.spProfesionalClinica_Result)">
-            <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
+          <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spProfesionalClinicaEspecialidadInicio" ReturnType="Collection(ClinicaModel.spProfesionalClinicaEspecialidadInicio_Result)" />
           <FunctionImport Name="spProfesionalConEspecialidad" ReturnType="Collection(ClinicaModel.spProfesionalConEspecialidad_Result)">
-            <Parameter Name="ClinicaID" Mode="In" Type="Int32" />
+          <Parameter Name="ClinicaID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spProfesionalenClinica" ReturnType="Collection(ClinicaModel.spProfesionalenClinica_Result)">
-            <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
+          <Parameter Name="ClinicaId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spProfesionalSucursal" ReturnType="Collection(ClinicaModel.spProfesionalSucursal_Result)">
             <Parameter Name="SucursalID" Mode="In" Type="Int32" />
             <Parameter Name="Clinica" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spSucursalId" ReturnType="Collection(Int32)" />
+          <AssociationSet Name="FK__Sucursal__Sucurs__6E01572D" Association="ClinicaModel.FK__Sucursal__Sucurs__6E01572D">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Sucursal" EntitySet="Sucursal" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="spDiasAtencion_Result">
           <Property Type="Int32" Name="id_dia" Nullable="false" />
@@ -1073,6 +1060,18 @@
           <Property Type="String" Name="Photopath" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="Documento" Nullable="false" />
         </ComplexType>
+        <Association Name="FK__Sucursal__Sucurs__6E01572D">
+          <End Type="ClinicaModel.Clinica" Role="Clinica" Multiplicity="1" />
+          <End Type="ClinicaModel.Sucursal" Role="Sucursal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="ClinicaId" />
+            </Principal>
+            <Dependent Role="Sucursal">
+              <PropertyRef Name="SucursalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

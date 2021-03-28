@@ -14,7 +14,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #0d0c0d;">
                 <h6><img src="@photopath" class="rounded-circle z-depth-1-half avatar-pic" alt="No hay imagen" height="100" width="100"></h6>
-                <h6 class="m-0 font-weight-bold text-white">Clinca @Html.DisplayFor(model => model.Nombre)</h6>
+                <h6 class="m-0 font-weight-bold text-white">Clinica @Html.DisplayFor(model => model.Nombre)</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -24,8 +24,6 @@
                         <a id="agregar_sucursal" class="dropdown-item" href="#">Agregar</a>
                     </div>
                 </div>
-                <a id="agregar_sucursal" class="dropdown-item" href="#">Agregar</a>
-                <a href="#" class="btn btn-primary" id="agregar_sucursal" data-toggle="tooltip" data-placement="top" title="Agregar Sucursal"><i class="fas fa-plus"></i></a>
             </div>
             <div class="card-body bg-white">
                 <table class="table text-black">
@@ -121,7 +119,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Asignar Profesionales</h5>
+                    <h5 class="modal-title">Crear Sucursal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -195,7 +193,6 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-success" value="Agregar" />
-                    <a href="@Url.Action("CrearSucursal", new { id = Model.ClinicaId })" class="btn btn-success"><i class="fas fa-plus"></i> egregar</a>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
 

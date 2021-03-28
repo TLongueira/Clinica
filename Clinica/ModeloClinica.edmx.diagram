@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c668ac32239d4c89812660c70b3493b4" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="ClinicaModel.Atencion" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.Clinica" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.Clinica_profesinales_especialidad" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.Clinica_profesionales" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.DiasSemana" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.Especialidad" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="c668ac32239d4c89812660c70b3493b4" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="ClinicaModel.Atencion" Width="1.5" PointX="14.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Clinica" Width="1.75" PointX="14.375" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Clinica_profesinales_especialidad" Width="1.5" PointX="7.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Clinica_profesionales" Width="1.5" PointX="4.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.DiasSemana" Width="1.5" PointX="12.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Especialidad" Width="1.5" PointX="4.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.Localidad" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.obra_social" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.Pacientes" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
@@ -18,14 +18,13 @@
         <EntityTypeShape EntityType="ClinicaModel.Profesional" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.Provincia" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.Rol" Width="1.5" PointX="4.5" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.Sucursal" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicaModel.sucursales_profesionales_especialidades" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.Sucursal" Width="1.5" PointX="17.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicaModel.sucursales_profesionales_especialidades" Width="1.5" PointX="10.125" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.TipoUsuario" Width="1.5" PointX="4.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicaModel.Usuarios" Width="1.5" PointX="6.75" PointY="12.375" IsExpanded="true" />
         <AssociationConnector Association="ClinicaModel.FK__Atencion__DiaId__308E3499" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__Atencion__Sucurs__2F9A1060" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__Clinica_p__id_cl__08B54D69" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicaModel.FK__Sucursal__Sucurs__6E01572D" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__Clinica_p__id_cp__1332DBDC" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__Clinica_p__id_es__14270015" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__sucursale__id_cp__17036CC0" ManuallyRouted="false" />
@@ -40,6 +39,7 @@
         <AssociationConnector Association="ClinicaModel.FKUsuarioRol" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FK__sucursale__id_su__17F790F9" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicaModel.FKUsuarioTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicaModel.FK__Sucursal__Sucurs__6E01572D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

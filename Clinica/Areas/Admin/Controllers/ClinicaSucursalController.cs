@@ -25,7 +25,7 @@ namespace Clinica.Areas.Admin.Controllers
             clinica_Profesionales.id_profesional = id;
             db.Clinica_profesionales.Add(clinica_Profesionales);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Detalles/"+id_clinica);
         }
         public ActionResult Asignarespecialidad(int? id)
         {

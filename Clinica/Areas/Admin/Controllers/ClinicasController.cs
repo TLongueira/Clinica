@@ -188,6 +188,7 @@ namespace Clinica.Areas.Admin.Controllers
                 sucursal.Photopath = "/imagenes/Clinica_logos/" + filename;
             }
             sucursal.ClinicaId = id;
+            sucursal.SucursalId = null;
             db.Sucursal.Add(sucursal);
             db.SaveChanges();
             return View("Index");
