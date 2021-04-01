@@ -193,6 +193,25 @@ namespace Clinica.Areas.Admin.Controllers
             db.SaveChanges();
             return View("Index");
         }
+
+
+        public ActionResult EliminarSucursal(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Sucursal sucursal = db.Sucursal.Find(id);
+            if (sucursal == null)
+            {
+                return HttpNotFound();
+            }
+
+            db.Sucursal.Remove(sucursal);
+            db.SaveChanges();
+            return View("Index");
+        }
     }
 
 }
