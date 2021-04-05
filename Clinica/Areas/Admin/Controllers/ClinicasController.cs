@@ -188,10 +188,12 @@ namespace Clinica.Areas.Admin.Controllers
                 sucursal.Photopath = "/imagenes/Clinica_logos/" + filename;
             }
             sucursal.ClinicaId = id;
+
+            var clinica = sucursal.ClinicaId;
             sucursal.SucursalId = null;
             db.Sucursal.Add(sucursal);
             db.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Detalles", new { id = clinica });
         }
 
 
@@ -203,6 +205,7 @@ namespace Clinica.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Sucursal sucursal = db.Sucursal.Find(id);
+            var clinica = sucursal.ClinicaId;
             if (sucursal == null)
             {
                 return HttpNotFound();
@@ -210,7 +213,7 @@ namespace Clinica.Areas.Admin.Controllers
 
             db.Sucursal.Remove(sucursal);
             db.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Detalles", new { id = clinica });
         }
     }
 

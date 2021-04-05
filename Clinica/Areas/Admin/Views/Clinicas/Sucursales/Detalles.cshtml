@@ -1,6 +1,5 @@
 ﻿@model Sucursal
-@Html.BeginForm("AsignarHorarioProfesional", "Clinicas", FormMethod.Post)
-{
+
 <h4>Sucursal</h4>
 <hr />
 @foreach (var item in (IList<Sucursal>)ViewBag.foto)
@@ -19,7 +18,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 d-flex flex-row  align-items-center justify-content-between" style="background-color: #0d0c0d">
                                 <h6> </h6>
-                                <h6 class="m-0 font-weight-bold text-white">Listado de clinicas</h6>
+                                <h6 class="m-0 font-weight-bold text-white">Listado de Sucursales</h6>
                                 <a href="@Url.Action("AsignarHorarioProfesional", new { id = item.SucursalId})" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Dar horario a un profesional"><i class="fas fa-plus"></i>Asignar horario</a>
                             </div>
                             <div class="card-body bg-white">
@@ -29,7 +28,7 @@
                                         <th>Calle</th>
                                         <th>Altura</th>
                                         <th>Nombre</th>
-                                        <th>Clininca</th>
+                                        <th>Clinica</th>
                                         <th>Localidad</th>
                                         <th>Provinicia</th>
                                     </tr>
@@ -62,5 +61,4 @@
             </div>
         </div>
     </div>
-}
 }

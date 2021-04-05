@@ -102,5 +102,21 @@ namespace Clinica.Areas.Admin.Controllers
         {
             return View("Sucursales/Detalles");
         }
+
+        public ActionResult EditarSucursal(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.foto = db.Sucursal.Where(S => S.SucursalId == id).ToList();
+            Sucursal sucursal = db.Sucursal.Find(id);
+            if (sucursal == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Sucursales/Editar");
+        }
+
     }
 }
